@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculadora.css" />
+<title> Calculadora de Indicadores</title>
+</head>
+<body>
+<header>
+<h3>Gestão de Indicadores Logísticos</h3>
+</header>
+<main>
+<!-- formulario-->
+<div id="Calculadora" class="tela ativa">
+
+<form id="informacoes">
+<div class="campo">
+<label for="nomeDoProdutoPrincipal"> Nome do Produto</label> <input type="text" id="nomeDoProdutoPricipal" placeholder="Ex: Produto A">
+</div>
+<div class="campo">
+<label for="estoqueFisico"> Estoque Físico</label> <input type="number" min="0" id="estoqueFisico" placeholder="Ex: 200">
+</div>
+<div class="campo">
+<label for="estoqueVirtual"> Estoque Virtual</label> <input type="number" min="0" id="estoqueVirtual" placeholder="Ex: 150">
+</div>
+<div class="campo">
+<label for="vendaTotal"> Total de Vendas</label> <input type="number" min="0" id="vendaTotal" placeholder="Ex: 250">
+</div>
+<div class="campo">
+<label for="tempoRepo"> Tempo de Reposição (dias)</label> <input type="number" min="0" id="tempoRepo" placeholder="Ex: 5">
+</div>
+<div class="campo">
+<label for="totalDePedidos"> Total de Pedidos</label> <input type="number" id="totalDePedidos" min="0" placeholder="Ex: 300">
+</div>
+<div class="alinhar">
+<select id="periodo"> <option value="Dia"> Dia</option> <option value="mes" selected> Mes</option> <option value="Ano"> Ano</option>
+</select> <button type="button" id="calcular" onclick="armazenarvalor()"> Calcular</button>
+</div>
+</form>
+</div>
+
+<!--graficos-->
+
+
+<div id="graficos-prici" class="graficos-coluna tela">
+<div class="grafico-box">
+<h4> Giro de Estoque</h4> <div class="grafico-scroll">
+<canvas id="graficoGiro"></canvas>
+</div>
+</div>
+<div class="grafico-box">
+<h4> Consumo Médio</h4> <div class="grafico-scroll">
+<canvas id="graficoConsumo"></canvas>
+</div>
+</div>
+<div class="grafico-box">
+<h4> Cobertura de Estoque(Em dias)</h4> <div class="grafico-scroll">
+<canvas id="graficoCobertura"></canvas>
+</div>
+</div>
+<div class="grafico-box">
+<h4> Indice de Ruptura</h4> <div class="grafico-scroll">
+<canvas id="graficoRuptura"></canvas>
+</div>
+</div>
+
+</div>
+
+<!-- tabela-->
+<div id="tabela" class="tela">
+    <div id="header-tabela">
+        <input type="text" name="pesquisa" id="pesquisa-produto" placeholder="Procurar produto" oninput="filtrarTabela()"/>
+        <div class="botoes-filtro">
+ <button class="botao-filtro" type="button" onclick="mostrarIndicador('todos')">Todos</button>
+<button class="botao-filtro" type="button" onclick="mostrarIndicador(1)">Giro</button>     
+<button class="botao-filtro" type="button" onclick="mostrarIndicador(2)">Consumo</button>  
+<button class="botao-filtro" type="button" onclick="mostrarIndicador(3)">Cobertura</button>     
+
+<button class="botao-filtro" type="button" onclick="mostrarIndicador(4)">Ruptura</button>     
+
+        </div>
+    </div>
+
+<div id="tabela-C">
+
+<div id="header-graficos" class="header">
+  <div class="preenchimento linha">
+    <p class="col0">Produto</p>
+    <p class="col1">Giro de Estoque</p>
+    <p class="col2">Consumo Médio</p>
+    <p class="col3">Cobertura(dias)</p>
+    <p class="col4">Índice de Ruptura(%)</p>
+    <p class="col5">Editar</p>
+    <p class="col6">Excluir</p>
+  </div>
+</div><div class="container-tabela">
+<div id="graficos">
+
+</div>
+</div>
+
+
+</div>
+</div>
+
+<!---Editar---->
+
+<form id="editarFor" style="display: none;" accept-charset="utf-8">
+<button type="button" id="sair" onclick="voltar()">   &#8656; voltar </button>
+<h3>Informaçoes do Produto</h3>
+<div class="campo">
+<label for="nomeproduto"> Produto</label> <input type="text" id="noproduto" placeholder="produto-A">
+</div>
+<div class="campo">
+<label for="esFisico"> Estoque Físico</label> <input type="number" id="esFisico" placeholder="Ex: 200">
+</div>
+<div class="campo">
+<label for="esVirtual"> Estoque Virtual</label> <input type="number" id="esvirtual" placeholder="Ex: 150">
+</div>
+<div class="campo">
+<label for="esVenda"> Total de vendas</label> <input type="number" id="TotalDevendas" placeholder="Ex: 200">
+</div>
+<div class="campo">
+<label for="tempo"> Tempo de Reposição (dias)</label> <input type="number" id="tempo" placeholder="Ex: 10">
+</div>
+<div class="campo">
+<label for="totalPedido"> Total de Pedidos</label> <input type="number" id="totalPedido" placeholder="Ex: 300">
+</div>
+<button type="button" class="editar" onclick="salvarEdicao()"> Editar</button>
+</form>
+<div id="form-excluir" style="display: none;">
+<p>
+Tem certeza que deseja excluir tudo?
+</p>
+<div class="alinhar">
+
+<button type="button" class="cancelar">Cancelar</button>
+<button type="button" class="confirmar">Excluir</button>
+</div>
+</div>
+
+
+<!---Gerar Relatorio---->
+<div id="relatorio" class="tela">
+</div>
+
+
+
+
+
+</main>
+<!--Menu-->
+<nav id="menu">
+<button type="button" onclick="mostrarTela('Calculadora')" class="ativo">
+<p>
+&#128290
+</p>
+Calcular</button>
+
+<button type="button" onclick="mostrarTela('tabela')"> <p>
+&#128203
+</p>
+
+Tabela</button>
+
+<button type="button" onclick="mostrarTela('graficos-prici')"> <p>
+&#128202
+</p>
+Graficos</button>
+<button id="gerarRelatorio"type="button" onclick="mostrarTela('relatorio')"> <p>
+&#128161
+</p>
+relatorio</button>
+<button id="apagarTudo"> Excluir tudo</button>
+</nav>
+
+<script src="calculadora.js" defer>
+
+</script>
+</body>
+
+</html>
