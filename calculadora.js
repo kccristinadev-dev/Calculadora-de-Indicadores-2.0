@@ -824,7 +824,7 @@ function corNivel(nivel) {
     const cores = {
         "Bom": "#4a7c59",
         "Medio": "#c68c3f",
-        "Ruim": "#8b2d2d"
+        "Ruim": "#FF6347"
     };
     return cores[nivel] || "#fff";
 
