@@ -30,6 +30,9 @@
   <li>Acesse o relatório para análise detalhada</li>
   <li>Gere o PDF</li>
 </ol><h2>Observações</h2>
+<p align="center">
+  <img src="./img/TelaC.png" width="500">
+</p>
 <ul>
   <li>Os dados são armazenados no navegador</li>
   <li>Não utiliza backend</li>
