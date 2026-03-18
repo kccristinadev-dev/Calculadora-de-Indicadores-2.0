@@ -31,7 +31,7 @@
   <li>Gere o PDF</li>
 </ol><h2>Observações</h2>
 <p align="center">
-  <img src="./img/TelaC.jpg" width="500">
+  <img src="TelaC.jpg" width="500">
 </p>
 <ul>
   <li>Os dados são armazenados no navegador</li>
