@@ -35,4 +35,4 @@
   <li>Não utiliza backend</li>
   <li>Focado em estudo e simulação logística</li>
 </ul><h2>👩🏾‍💻 Autora</h2>
-<p>Desenvolvido por você mesma.</p>
+<p>Desenvolvido por Kethelyn Cristina</p>
