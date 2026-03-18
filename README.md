@@ -33,6 +33,7 @@
 <p align="center">
   <img src="TelaC.jpg" width="500">
 </p>
+<br><br>
 <ul>
   <li>Os dados são armazenados no navegador</li>
   <li>Não utiliza backend</li>
