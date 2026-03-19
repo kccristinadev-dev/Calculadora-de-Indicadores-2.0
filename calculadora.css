@@ -163,7 +163,7 @@ main {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-#calcular:acative {
+#calcular:active {
   transform: scale(0.96);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
@@ -300,7 +300,7 @@ box-shadow: inset 0 0 15px rgba(0,255,0,1), 0 0 10px rgba(0,255,0,0.4);
   text-align: center;
   font-size: 0.85rem;
   color: #fff;
-  background-color: rgba(300, 300, 300, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -516,7 +516,6 @@ min-width: 200px;
 
   /* Tabela scroll horizontal */
    .linha {
-       overflow-x: none;
        overflow-y: auto;
    }
   
@@ -525,5 +524,18 @@ min-width: 200px;
 }
 
   /* Gráficos ajustam largura */
+
+}
+@media (min-width: 768px) {
+
+#menu{
+    top: 55px;
+    bottom: auto;
+}
+
+main{
+    padding-bottom: 0;
+    padding-top: 80px;
+}
 
 }
